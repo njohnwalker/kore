@@ -38,24 +38,17 @@ dependencies:
 
 library:
   source-dirs: src
-  verbatim:
-    autogen -modules: |
-      Build_kore
 
 executables:
   kore-parser:
     main:                Main.hs
     source-dirs:         app/parser
-    verbatim:
-      autogen -modules: |
-        Build_language-kore
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
     - language-kore
-    - optparse-simple
 
 tests:
   kore-parser-test:

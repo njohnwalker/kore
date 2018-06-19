@@ -13,15 +13,12 @@ import           System.Clock                               (Clock (Monotonic)
                                                             ,diffTimeSpec
                                                             ,getTime)
 
-import qualified Build_kore                                 as Meta
 import           Options.Applicative
-import           Options.Simple
 import           Data.Semigroup                             ((<>))
 
 {-
 Main module to run kore-parser
 TODO: add command line argument tab-completion
-TODO: refactor common parts
 -}
 
 -- | Main options record
@@ -30,7 +27,6 @@ data KoreParserOptions = KoreParserOptions
     , willPrint   :: !Bool   -- ^ Option to print definition
     , willVerify  :: !Bool   -- ^ Option to verify definition
     , willChkAttr :: !Bool   -- ^ Option to check attributes during verification
-    , willVersion :: !Bool   -- ^ Print version flag
     }
 
 -- | Command Line Argument Parser
@@ -49,10 +45,6 @@ commandLineParser =
     <*> switch3 "chkattr"
             "Check attributes during verification [default]"
             "Ignore attributes during verification"
-    <*> flag True False
-        (  short 'v'
-        <> long "version"
-        <> help "Print version information and exit" )
 
 -- | Run argument parser for kore-parser
 commandLineParse :: IO KoreParserOptions
@@ -74,21 +66,18 @@ main =
       , willPrint   = willPrint
       , willVerify  = willVerify
       , willChkAttr = willChkAttr
-      , willVersion = willVersion
       } <- commandLineParse
-    ; when (not willVersion)
-      do { contents <-
-               clockSomethingIO "Reading the input file" (readFile fileName)
-         ; parseResult <-
-             clockSomething "Parsing the file" (fromKore fileName contents)
-         ; let parsedDefinition =
-                   case parseResult of
-                     Left err         -> error err
-                                         Right definition -> definition
-         ; when (willVerify) (verifyMain willChkAttr parsedDefinition)
-         ; when (willPrint) (print parsedDefinition)
-       }
-    ; when (willVersion) $ putStrLn $(simpleVersion Meta.version)
+    ; contents <-
+        clockSomethingIO "Reading the input file" (readFile fileName)
+    ; parseResult <-
+        clockSomething "Parsing the file" (fromKore fileName contents)
+    ; let parsedDefinition =
+            case parseResult of
+                Left err         -> error err
+                Right definition -> definition
+    ; when (willVerify) (verifyMain willChkAttr parsedDefinition)
+    ; when (willPrint) (print parsedDefinition)
+    }
 
 {-|
 IO subprocess to verify well-formedness of Kore definition
