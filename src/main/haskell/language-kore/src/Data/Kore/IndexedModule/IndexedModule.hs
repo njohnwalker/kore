@@ -412,7 +412,21 @@ indexModuleMetaSentence
                 (attributes, importedModule) : indexedImports
             }
         )
-
+-- +@+
+indexedModuleMetaSentence
+    implicitModule
+    importingModules
+    nameToModule
+    ( indexedModules
+    , indexedModule @ IndexedModule { indexedModuleMetaSortDescriptions = indexedMetaSorts }
+    )
+    ( SentenceSortSentence SentenceSort
+        { sentenceSortName = sortName
+        , sentenceSortParameters = sortParams
+        , sentenceSortAttributes = sortAttributes
+        }
+    )
+  = undefined
 
 indexModuleObjectSentence
     :: KoreImplicitIndexedModule

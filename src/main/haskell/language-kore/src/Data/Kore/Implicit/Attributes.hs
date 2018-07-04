@@ -13,6 +13,7 @@ module Data.Kore.Implicit.Attributes
     ( attributeObjectSort
     , hookAttribute
     , smtlibAttribute
+    , usermetaAttribute
     , functionalAttribute
     , constructorAttribute
     , uncheckedAttributesModule
@@ -36,7 +37,7 @@ noParameterObjectSortAndSentence name =
             , sentenceSortParameters = []
             , sentenceSortAttributes = Attributes []
             }
-        :: KoreSentenceSort
+        :: KoreSentenceSort Object
         )
     )
 
@@ -52,7 +53,6 @@ hookObjectSortSentence :: KoreSentence
 (hookObjectSort, hookObjectSortSentence) =
     noParameterObjectSortAndSentence "Hook"
 
-
 hookName :: String
 hookName = "hook"
 
@@ -66,6 +66,7 @@ string.
 hookAttribute :: String -> AstLocation -> CommonKorePattern
 hookAttribute hook location =
     singleDomainValueAttribute hookName hook $ hookObjectSort location
+
 
 -- | `sort SmtLib{} []`
 smtlibObjectSort :: AstLocation -> Sort Object
@@ -83,6 +84,25 @@ smtlibAttribute :: String -> AstLocation -> CommonKorePattern
 smtlibAttribute smtlibSymbol location =
     singleDomainValueAttribute "smtlib" smtlibSymbol $ smtlibObjectSort location
 
+
+-- | `sort UserMeta{}[]`
+usermetaObjectSort :: AstLocation -> Sort Object
+usermetaObjectSortSentence :: KoreSentence
+(usermetaObjectSort, usermetaObjectSortSentence) =
+    noParameterObjectSortAndSentence "UserMeta"
+
+-- | `symbol usermeta{}(UserMeta{}):Attribute{}[]`
+usermetaObjectSymbolSentence :: KoreSentence
+usermetaObjectSymbolSentence =
+  attributeObjectSymbolSentence "usermeta" usermetaObjectSort
+
+-- | example `usermeta{}(\dv{UserMeta{}}("#Nat"))`
+usermetaAttribute :: String -> AstLocation -> CommonKorePattern
+usermetaAttribute metaSort location =
+    singleDomainValueAttribute "usermeta" metaSort $ usermetaObjectSort location
+
+
+-- | example: `symbol hook{}(Hook{}):Attribute{}[]` 
 attributeObjectSymbolSentence
   :: String                       -- ^ attribute symbol
   -> (AstLocation -> Sort Object) -- ^ argument sort constructor
@@ -277,6 +297,8 @@ uncheckedAttributesModule =
             , hookObjectSymbolSentence
             , smtlibObjectSortSentence
             , smtlibObjectSymbolSentence
+            , usermetaObjectSortSentence
+            , usermetaObjectSymbolSentence
             , functionalSymbolSentence
             , constructorSymbolSentence
             , argumentPositionObjectSortSentence
