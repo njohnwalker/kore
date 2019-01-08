@@ -52,7 +52,7 @@ import qualified Text.Megaparsec.Char as Parser
 import           Kore.AST.Kore
 import           Kore.AST.Pure
 import           Kore.AST.Sentence
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain.External as Domain
 import           Kore.Parser.Lexeme
 import           Kore.Parser.ParserUtils
                  ( Parser )
@@ -370,6 +370,26 @@ topBottomRemainderParser x constructor = do
     inParenthesesParser (return ())
     return (constructor sort)
 
+{-| 'domainValueRemainderParser' parses the tokens after a domain value operator
+name and the first open curly brace and constructs it using the provided
+constructor.
+
+BNF fragments:
+
+@
+<object-pattern> ::= ... <object-sort> ‘}’ ‘(’ <meta-pattern> ‘)’
+@
+-}
+-- domainValueRemainderParser
+--     :: MetaOrObject level
+--     => level
+--     -> (Sort level -> domain child -> ctor level domain child)
+--     -> Parser (ctor level domain child)
+domainValueRemainderParser x constructor = do
+    sort <- inCurlyBracesRemainderParser (sortParser x)
+    valuePattern <- inParenthesesParser metaPatternParser
+    return $ constructor sort $ Domain.External valuePattern
+
 {-|'symbolOrAliasPatternRemainderParser' parses the part after a the first
 identifier in an application pattern and constructs it.
 It uses an open recursion scheme for the children.
@@ -391,7 +411,7 @@ symbolOrAliasPatternRemainderParser
     => Parser child
     -> level  -- ^ Distinguishes between the meta and non-meta elements.
     -> Id level  -- ^ The already parsed prefix.
-    -> Parser (Pattern level Domain.Builtin Variable child)
+    -> Parser (Pattern level Domain.External Variable child)
 symbolOrAliasPatternRemainderParser childParser x identifier =
     ApplicationPattern
     <$> (   Application
@@ -494,7 +514,7 @@ variableOrTermPatternParser
     :: MetaOrObject level
     => Parser child
     -> level  -- ^ Distinguishes between the meta and non-meta elements.
-    -> Parser (Pattern level Domain.Builtin Variable child)
+    -> Parser (Pattern level Domain.External Variable child)
 variableOrTermPatternParser childParser x = do
     identifier <- idParser x
     c <- ParserUtils.peekChar'
@@ -639,7 +659,7 @@ leveledMLConstructorParser
     :: MetaOrObject level
     => Parser child
     -> level
-    -> Parser (Pattern level Domain.Builtin Variable child)
+    -> Parser (Pattern level Domain.External Variable child)
 leveledMLConstructorParser childParser level = do
     void (Parser.char '\\')
     keywordBasedParsers
@@ -677,7 +697,7 @@ mlConstructorRemainderParser
     => Parser child
     -> level
     -> MLPatternType
-    -> Parser (Pattern level Domain.Builtin Variable child)
+    -> Parser (Pattern level Domain.External Variable child)
 mlConstructorRemainderParser childParser x patternType =
     case patternType of
         AndPatternType -> AndPattern <$>
@@ -711,11 +731,7 @@ mlConstructorRemainderParser childParser x patternType =
                 IsMeta -> unsupportedPatternType Meta DomainValuePatternType
                 IsObject ->
                     DomainValuePattern <$>
-                    (   DomainValue
-                    <$> inCurlyBracesRemainderParser (sortParser Object)
-                    <*> inParenthesesParser
-                        (Domain.BuiltinPattern <$> metaPatternParser)
-                    )
+                    domainValueRemainderParser Object DomainValue
         NextPatternType ->
             case isMetaOrObject (toProxy x) of
                 IsMeta -> unsupportedPatternType Meta NextPatternType
@@ -1100,7 +1116,7 @@ leveledPatternParser
     :: MetaOrObject level
     => Parser child
     -> level
-    -> Parser (Pattern level Domain.Builtin Variable child)
+    -> Parser (Pattern level Domain.External Variable child)
 leveledPatternParser patternParser level = do
     c <- ParserUtils.peekChar'
     case c of
@@ -1115,7 +1131,7 @@ leveledPatternParser patternParser level = do
 purePatternParser
     :: MetaOrObject level
     => level
-    -> Parser (ParsedPurePattern level Domain.Builtin)
+    -> Parser (ParsedPurePattern level Domain.External)
 purePatternParser level = do
     patternHead <- leveledPatternParser (purePatternParser level) level
     return $ asPurePattern (mempty :< patternHead)
