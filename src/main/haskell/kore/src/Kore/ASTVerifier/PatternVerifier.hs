@@ -49,7 +49,7 @@ import           Kore.ASTVerifier.Error
 import           Kore.ASTVerifier.SortVerifier
 import qualified Kore.Attribute.Null as Attribute
 import qualified Kore.Builtin as Builtin
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Error
 import           Kore.Implicit.ImplicitSorts
 import           Kore.IndexedModule.IndexedModule

@@ -17,7 +17,7 @@ import           Prelude hiding
 import           Kore.AST.Pure
 import           Kore.AST.Valid
 import qualified Kore.Builtin.Map as Map
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import qualified Kore.Predicate.Predicate as Predicate
 import           Kore.Step.AxiomPatterns
 import           Kore.Step.BaseStep

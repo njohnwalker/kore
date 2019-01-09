@@ -32,7 +32,7 @@ import           Kore.AST.Sentence
 import           Kore.AST.Valid
                  ( mkStringLiteral )
 import           Kore.ASTUtils.SmartPatterns
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Implicit.ImplicitKore
                  ( mlPatternP, variable )
 import           Kore.Implicit.ImplicitSorts

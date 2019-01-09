@@ -8,7 +8,7 @@ import Test.Tasty.HUnit
 import           Kore.AST.Kore
 import           Kore.ASTPrettyPrint
 import           Kore.ASTUtils.SmartPatterns
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Implicit.ImplicitSorts
                  ( charMetaSort )
 import           Kore.MetaML.AST

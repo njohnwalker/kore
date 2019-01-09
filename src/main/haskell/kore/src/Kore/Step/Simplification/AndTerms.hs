@@ -37,7 +37,7 @@ import           Kore.AST.Valid
 import qualified Kore.Builtin.List as Builtin.List
 import qualified Kore.Builtin.Map as Builtin.Map
 import qualified Kore.Builtin.Set as Builtin.Set
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.IndexedModule.MetadataTools
 import qualified Kore.IndexedModule.MetadataTools as MetadataTools
                  ( MetadataTools (..) )

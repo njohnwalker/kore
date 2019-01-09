@@ -22,7 +22,7 @@ import           Kore.ASTHelpers
 import           Kore.Building.AsAst
 import           Kore.Building.Patterns
 import           Kore.Building.Sorts as Sorts
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Implicit.ImplicitSorts
 
 import Test.Kore

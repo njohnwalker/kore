@@ -16,7 +16,7 @@ import           Kore.AST.PureToKore
 import           Kore.AST.Sentence
 import           Kore.AST.Valid
 import qualified Kore.Attribute.Hook as Attribute.Hook
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Error
 import           Kore.Implicit.ImplicitSorts
 import           Kore.MetaML.AST

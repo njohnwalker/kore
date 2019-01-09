@@ -13,7 +13,7 @@ import qualified Data.Sequence as Seq
 import           Kore.AST.Pure
 import           Kore.AST.Valid
 import qualified Kore.Builtin.List as List
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Step.ExpandedPattern
 import qualified Kore.Step.ExpandedPattern as ExpandedPattern
 import           Kore.Step.Pattern

@@ -29,7 +29,7 @@ import           Kore.AST.Pure
 import           Kore.AST.Sentence
 import           Kore.ASTUtils.SmartPatterns
 import qualified Kore.Builtin as Builtin
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Implicit.ImplicitSorts
 import           Kore.MetaML.AST
 

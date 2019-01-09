@@ -72,7 +72,7 @@ import           Kore.AST.Common hiding
                  mapVariables, traverseVariables )
 import           Kore.AST.Identifier
 import           Kore.AST.MetaOrObject
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Sort
 import           Template.Tools
                  ( newDefinitionGroup )

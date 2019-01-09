@@ -21,7 +21,7 @@ import           Kore.AST.Kore
 import           Kore.AST.Pure
 import           Kore.AST.Sentence
 import qualified Kore.Builtin.Error as Builtin
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Parser.CString
                  ( escapeCString )
 import           Kore.Predicate.Predicate

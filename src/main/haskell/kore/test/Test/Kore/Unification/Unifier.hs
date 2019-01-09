@@ -31,7 +31,7 @@ import           Kore.Attribute.Function
 import           Kore.Attribute.Functional
 import           Kore.Attribute.Injective
 import           Kore.Attribute.SortInjection
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.IndexedModule.MetadataTools
 import qualified Kore.IndexedModule.MetadataTools as HeadType
                  ( HeadType (..) )

@@ -13,7 +13,7 @@ module Kore.Proof.Functional
     ) where
 
 import           Kore.AST.Common
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 
 -- |'FunctionalProof' is used for providing arguments that a pattern is
 -- functional.  Currently we only support arguments stating that a

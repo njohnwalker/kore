@@ -9,7 +9,7 @@ import Test.Tasty.HUnit
        ( assertBool, assertEqual, assertFailure, testCase )
 
 import           Kore.AST.Kore
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Implicit.ImplicitSorts
 
 import Test.Tasty.HUnit.Extensions

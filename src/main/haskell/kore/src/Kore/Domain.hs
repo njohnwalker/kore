@@ -1,6 +1,10 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Kore.Domain.Builtin where
+module Kore.Domain
+  ( External (..)
+  , CommonExternalPattern
+  , Builtin (..)
+  ) where
 
 import           Control.DeepSeq
                  ( NFData (..) )
@@ -10,6 +14,7 @@ import qualified Data.Foldable as Foldable
 import           Data.Functor.Const
                  ( Const )
 import           Data.Hashable
+                 ( Hashable, hashWithSalt )
 import           Data.Map
                  ( Map )
 import qualified Data.Map as Map
@@ -22,13 +27,38 @@ import           Data.Void
 import           GHC.Generics
                  ( Generic )
 
-import Kore.Annotation.Valid
 import Kore.AST.Pure
+import Kore.Annotation.Valid
 
+-------------------------------
+-- Un-Verified Domain Values --
+{-| 'External' denotes a domain value not yet verified. Represented in Kore
+abstract syntax rather than a built-in datatype.
+-}
+newtype External child =
+    External { getExternal :: CommonPurePattern Meta (Const Void) }
+    deriving (Eq, Foldable, Functor, Generic, Ord, Show, Traversable)
+
+deriveEq1 ''External
+deriveOrd1 ''External
+deriveShow1 ''External
+
+instance NFData (External child)
+
+instance Hashable (External child)
+
+type CommonExternalPattern level = CommonPurePattern level External
+
+----------------------------
+-- Verified Domain Values --
 type Key = PurePattern Object Builtin Concrete (Valid Object)
 
+{- | 'Builtin' denotes a domain value after it has been decoded from Kore
+abstract syntax to the built-in datatype
+TODO(Nick): remove BuiltinPattern constructor
+-}
 data Builtin child
-    = BuiltinPattern !(ParsedPurePattern Meta (Const Void))
+    = BuiltinPattern !(ParsedPurePattern Meta (Const Void))  -- ^ deprecated, see 'External'
     | BuiltinMap !(Map Key child)
     | BuiltinList !(Seq child)
     | BuiltinSet !(Set Key)

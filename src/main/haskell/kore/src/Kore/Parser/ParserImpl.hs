@@ -52,7 +52,7 @@ import qualified Text.Megaparsec.Char as Parser
 import           Kore.AST.Kore
 import           Kore.AST.Pure
 import           Kore.AST.Sentence
-import qualified Kore.Domain.External as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Parser.Lexeme
 import           Kore.Parser.ParserUtils
                  ( Parser )

@@ -20,7 +20,7 @@ import qualified Data.Map as Map
 
 import           Kore.AST.Pure
 import           Kore.AST.Valid
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.IndexedModule.MetadataTools
                  ( MetadataTools )
 import qualified Kore.IndexedModule.MetadataTools as MetadataTools

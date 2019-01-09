@@ -9,7 +9,7 @@ module Kore.Step.Pattern
 import           Kore.Annotation.Valid
 import           Kore.AST.Pure
                  ( Concrete, Pattern, PurePattern, Variable )
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 
 type StepPattern level variable =
     PurePattern level Domain.Builtin variable (Valid level)

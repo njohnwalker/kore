@@ -89,7 +89,7 @@ import           GHC.Generics
 import qualified Kore.Annotation.Null as Annotation
 import           Kore.AST.Kore as Kore
 import           Kore.AST.Pure as Pure
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 
 {-|'Symbol' corresponds to the
 @object-head-constructor{object-sort-variable-list}@ part of the

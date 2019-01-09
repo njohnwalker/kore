@@ -12,7 +12,7 @@ import qualified Data.Sequence as Seq
 
 import           Kore.AST.Pure
 import           Kore.AST.Valid
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.IndexedModule.MetadataTools
                  ( MetadataTools )
 import           Kore.Predicate.Predicate

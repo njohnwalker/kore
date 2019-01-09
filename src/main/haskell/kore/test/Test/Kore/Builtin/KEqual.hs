@@ -13,7 +13,7 @@ import           Test.Tasty.HUnit
 
 import           Kore.AST.Pure
 import           Kore.AST.Valid
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.IndexedModule.MetadataTools
 import qualified Kore.Step.ExpandedPattern as ExpandedPattern
 import           Kore.Step.StepperAttributes

@@ -50,7 +50,7 @@ import           Kore.AST.Pure
 import           Kore.AST.Valid
 import           Kore.ASTPrettyPrint
 import           Kore.ASTUtils.Substitution
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Unparser
 import           Kore.Variables.Free
 

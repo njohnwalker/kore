@@ -36,7 +36,7 @@ import           Kore.Annotation.Valid
 import           Kore.AST.Pure
                  ( CofreeF (..), Object, Pattern (..) )
 import qualified Kore.AST.Pure as Pattern
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.IndexedModule.MetadataTools
 import           Kore.Step.Pattern
 import           Kore.Step.StepperAttributes

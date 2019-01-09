@@ -11,7 +11,7 @@ import           Kore.AST.Kore
 import           Kore.AST.Pure as Pure
 import           Kore.AST.PureToKore
 import           Kore.AST.Sentence
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.MetaML.AST
 
 import Test.Kore

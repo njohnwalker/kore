@@ -23,7 +23,7 @@ import qualified Data.Map as Map
 import qualified Data.Set as Set
 
 import           Kore.AST.Pure as Pure
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 
 -- alphaEq compares terms modulo renaming of bound variables
 -- bound variables are variables in the first position of a

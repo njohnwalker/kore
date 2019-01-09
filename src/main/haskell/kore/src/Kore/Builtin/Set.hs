@@ -73,7 +73,7 @@ import           Kore.Attribute.Hook
 import qualified Kore.Builtin.Bool as Bool
 import qualified Kore.Builtin.Builtin as Builtin
 import qualified Kore.Builtin.List as List
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import qualified Kore.Error as Kore
 import           Kore.IndexedModule.IndexedModule
                  ( VerifiedModule )

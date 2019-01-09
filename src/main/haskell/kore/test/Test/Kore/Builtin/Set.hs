@@ -16,7 +16,7 @@ import qualified Data.Set as Set
 import           Kore.AST.Pure
 import           Kore.AST.Valid
 import qualified Kore.Builtin.Set as Set
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Predicate.Predicate as Predicate
 import           Kore.Step.AxiomPatterns
                  ( RewriteRule (RewriteRule), RulePattern (RulePattern) )

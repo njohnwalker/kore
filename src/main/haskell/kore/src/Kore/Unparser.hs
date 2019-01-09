@@ -33,8 +33,7 @@ import           Kore.AST.Kore
 import           Kore.AST.Pure
 import           Kore.AST.Sentence
 import qualified Kore.Builtin.Error as Builtin
-import qualified Kore.Domain.Builtin as Domain
-import qualified Kore.Domain.External as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Parser.CString
                  ( escapeCString )
 
@@ -174,6 +173,8 @@ instance
             Domain.BuiltinMap _ -> Builtin.notImplementedInternal
             Domain.BuiltinList _ -> Builtin.notImplementedInternal
             Domain.BuiltinSet _ -> Builtin.notImplementedInternal
+            Domain.BuiltinInteger _ -> Builtin.notImplementedInternal
+            Domain.BuiltinBool _ -> Builtin.notImplementedInternal
 
 instance Unparse (Domain.External child) where
     unparse (Domain.External lit) = unparse lit

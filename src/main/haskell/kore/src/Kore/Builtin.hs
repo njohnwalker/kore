@@ -52,7 +52,7 @@ import qualified Kore.Builtin.List as List
 import qualified Kore.Builtin.Map as Map
 import qualified Kore.Builtin.Set as Set
 import qualified Kore.Builtin.String as String
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Error
 import           Kore.IndexedModule.IndexedModule
                  ( IndexedModule (..), VerifiedModule )

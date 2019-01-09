@@ -34,7 +34,7 @@ import           Kore.Attribute.Hook
                  ( Hook (..) )
 import qualified Kore.Builtin.Bool as Builtin.Bool
 import qualified Kore.Builtin.Int as Builtin.Int
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.IndexedModule.MetadataTools
                  ( HeadType )
 import qualified Kore.IndexedModule.MetadataTools as HeadType

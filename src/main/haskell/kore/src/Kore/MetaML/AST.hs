@@ -26,7 +26,7 @@ import qualified Data.Text as Text
 import qualified Kore.Annotation.Null as Annotation
 import           Kore.AST.Pure
 import           Kore.AST.Sentence
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Variables.Free
 
 {-|'MetaMLPattern' corresponds to "fixed point" representations

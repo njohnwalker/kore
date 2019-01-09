@@ -21,7 +21,7 @@ import           Kore.AST.Valid
                  ( mkStringLiteral )
 import           Kore.Building.AsAst
 import           Kore.Building.Sorts
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 
 {-| When defining new patterns (e.g. for new symbols and aliases),
 users are expected to instantiate either

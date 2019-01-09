@@ -88,7 +88,7 @@ import           Kore.ASTVerifier.Error
 import           Kore.Attribute.Hook
                  ( Hook (..) )
 import           Kore.Builtin.Error
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import           Kore.Error
                  ( Error, MonadError )
 import qualified Kore.Error

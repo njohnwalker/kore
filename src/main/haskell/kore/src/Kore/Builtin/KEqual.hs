@@ -33,7 +33,7 @@ import           Kore.AST.Sentence
 import           Kore.AST.Valid
 import qualified Kore.Builtin.Bool as Bool
 import qualified Kore.Builtin.Builtin as Builtin
-import qualified Kore.Domain.Builtin as Domain
+import qualified Kore.Domain as Domain
 import qualified Kore.Error
 import qualified Kore.IndexedModule.MetadataTools as MetadataTools
 import qualified Kore.Step.ExpandedPattern as ExpandedPattern
